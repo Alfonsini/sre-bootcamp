@@ -6,7 +6,7 @@ from flask import g, request
 from flask.logging import default_handler
 from app.extensions import db
 
-from app.config import Config
+from app.config.config import Config
 from app.main import bp_app_routes
 from .logger import get_handler
 

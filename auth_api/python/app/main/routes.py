@@ -9,7 +9,7 @@ from app.custom_exceptions import InvalidAuthorizationException, UserNotFoundExc
 from app.methods import Auth, JWTToken, Restricted
 
 authentication = Auth()
-jwtToken = JWTToken()
+jwt_token = JWTToken()
 protected = Restricted()
 
 bp_app_routes = Blueprint("main", __name__)
@@ -38,9 +38,9 @@ def url_login():
 
     try:
         user = authentication.authenticateUser(username, password)
-        jwt_token = jwtToken.generate_token(user.role)
+        jwt_token_generated = jwt_token.generate_token(user.role)
         responseBody['data'] = {
-            'token': jwt_token
+            'token': jwt_token_generated
         }
     except UserNotFoundException as ex:
         app.logger.exception(ex)
