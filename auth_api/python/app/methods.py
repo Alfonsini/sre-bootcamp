@@ -53,6 +53,6 @@ class Restricted:
         payload = jwt.decode(jwt_token, Config.JWT_SECRET_KEY,
                    algorithms="HS256", options={"verify_signature": True})
         
-        print(payload)
+        has_access = True
 
         return has_access
