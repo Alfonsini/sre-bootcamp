@@ -5,8 +5,8 @@ from flask import request
 from flask import abort
 import jwt
 
-from app.custom_exceptions import InvalidAuthorizationException, UserNotFoundException, IncorrectPasswordException
-from app.methods import Auth, JWTToken, Restricted
+from custom_exceptions import InvalidAuthorizationException, UserNotFoundException, IncorrectPasswordException
+from methods import Auth, JWTToken, Restricted
 
 authentication = Auth()
 jwt_token = JWTToken()

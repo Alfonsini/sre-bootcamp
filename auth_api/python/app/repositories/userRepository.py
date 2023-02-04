@@ -1,5 +1,5 @@
 from flask import current_app as app
-from app.models.user import User
+from models.user import User
 
 # These functions need to be implemented
 class UserRepository:

@@ -1,16 +1,16 @@
 import unittest
 from app import create_app
-from app.custom_exceptions import *
-from app.extensions import db
+from custom_exceptions import *
+from extensions import db
 
-from app.methods import JWTToken, Restricted
-from app.models.user import User
+from methods import JWTToken, Restricted
+from models.user import User
 
 
 class TestMethods(unittest.TestCase):
 
     def setUp(self):
-        self.app = create_app(config_class="app.config.config_testing")
+        self.app = create_app(config_class="config.config_testing")
         self.appctx = self.app.app_context()
         self.appctx.push()
         db.create_all()

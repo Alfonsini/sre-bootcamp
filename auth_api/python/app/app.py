@@ -4,16 +4,16 @@ import time
 from flask import Flask
 from flask import g, request
 from flask.logging import default_handler
-from app.extensions import db
+from extensions import db
 
-from app.config.config import Config
-from app.main import bp_app_routes
-from .logger import get_handler
+from config.config import Config
+from main import bp_app_routes
+from logger import get_handler
 
 
 def create_app(config_class=Config):
     app = Flask(__name__)
-    
+
     app.config.from_object(config_class)
 
     # Initialize logger
@@ -49,3 +49,9 @@ def create_app(config_class=Config):
         return response
 
     return app
+
+
+app = create_app()
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0")

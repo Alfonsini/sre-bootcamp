@@ -1,10 +1,10 @@
 from flask import current_app as app
-from app.repositories.userRepository import UserRepository
+from repositories.userRepository import UserRepository
 import hashlib
 import jwt
-from app.config.config import Config
+from config.config import Config
 
-from app.custom_exceptions import InvalidAuthorizationException, UserNotFoundException, IncorrectPasswordException, JWTSecretKeyNotFoundException
+from custom_exceptions import InvalidAuthorizationException, UserNotFoundException, IncorrectPasswordException, JWTSecretKeyNotFoundException
 
 # These functions need to be implemented
 
