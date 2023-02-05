@@ -1,0 +1,97 @@
+# Flask API
+
+## Local Setup
+
+### Setup
+
+- Step 1. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+- Step 2. Create below environment variables in your system.
+
+```bash
+export DATABASE_URI=''
+export JWT_SECRET_KEY=''
+```
+
+`DATABASE_URI`variable need to be assign with a connection string for SQLAlchemy like:
+
+```bash
+mysql+pymysql://{database_user}:{database_password}@{database_url}:{database_port}/{database_name}
+```
+
+### Run
+
+- Step 1. Go to {repo_directory}/auth_api/python/app
+- Step 3. Run below command
+
+```bash
+python3 -m flask run
+```
+
+## Docker
+
+### Build & Run
+
+- Step 1. Edit [start.sh](http://start.sh) file and edit the values for below variables.
+
+```bash
+#Database
+database_user=''
+database_password=''
+database_url=''
+database_port='3306'
+database_name=''
+
+#JWT config
+jwt_secret_key=''
+```
+
+- Step 2. Give permissions to bash script
+
+```bash
+chmod 755 start.sh
+```
+
+- Step 3. Execute [start.sh](http://start.sh) file
+
+```bash
+./start.sh
+```
+
+### DockerHub image
+- Step 1. Download image
+
+```bash
+docker pull alfonso09/wize-alfonso-ramirez
+```
+
+- Step 2. Run
+
+```bash
+sudo docker run -d \
+	-e DATABASE_URI='mysql+pymysql://{database_user}:{database_password}@{database_uri}:{database_port/{database_name}' \
+	-e JWT_SECRET_KEY='{jwt_private_key}' \
+	-p 8000:5000 \
+	alfonso09/wize-alfonso-ramirez:latest
+```
+
+## Endpoints
+
+Health
+```bash
+curl localhost:8000/_health
+```
+
+Login
+```bash
+curl -d "username=admin&password=secret" http://localhost:{PORT}/login
+```
+
+Protected 
+```bash
+curl -H 'Accept: application/json' -H "Authorization: Bearer {TOKEN}" localhost:{PORT}/protected
+```
